@@ -1,2 +1,67 @@
-<p>Home works!</p>
-<button class="btn btn-primary" (click)="postLogout()">Sair</button>
+<mat-toolbar class="mat-elevation-z8">
+    <button
+    mat-icon-button class="menuside"
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+    >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <img class="logo" src="../../assets/images/MLW_Store_sm.png" alt="Foto do logo da loja."/>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">       
+        
+        <img class="avatar mat-elevation-z8" src="../../assets/images/perfil.jpg" alt="Foto de perfil."/>
+
+        <h4 class="nome">Olá, Admin.</h4>
+        <p class="cargo">Administrador</p>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" (click)="postLogout()">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-button class="menu-button" (click)="postLogout()">
+            <mat-icon>person</mat-icon>
+            <span>Clientes</span>
+        </button>
+        <button mat-button class="menu-button" (click)="postLogout()">
+            <mat-icon>settings_input_hdmi</mat-icon>
+            <span>Peças</span>
+        </button>
+        <button mat-button class="menu-button" (click)="postLogout()">
+            <mat-icon>store</mat-icon>
+            <span>Marcas</span>
+        </button>
+        <button mat-button class="menu-button" (click)="postLogout()">
+            <mat-icon>attach_money</mat-icon>
+            <span>Orçamento</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" (click)="postLogout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Sair</span>
+        </button>
+
+    </mat-sidenav>    
+
+    <mat-sidenav-content>
+        <div class="content1 mat-elevation-z8">  
+            <img class="banner mat-elevation-z8" src="../../assets/images/banner.jpg" alt="Foto do logo da loja."/>         
+            <router-outlet></router-outlet>
+        </div>
+
+        <div class="content2 mat-elevation-z8">            
+            Conteúdo.
+            <router-outlet></router-outlet>
+        </div>
+
+    
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
