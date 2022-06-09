@@ -1,26 +1,30 @@
-<div class="header-content">
-  <p>DASHBOARD - Home</p>
-</div>
-<div class="table-wrapper">
-  <a th:href="@{/adicionar-tarefa}"><button>Adicionar Tarefa</button></a>
-  <div class="thead">
-      <div class="item">Nome</div>
-      <div class="item">E-mail</div>
-      <div class="item">Telefone</div>
-      <div class="item">Username</div>
-      <div class="item">Ações</div>
-  </div>
-  <div class="tbody">
-      <div class="item-wrapper">
-          <div class="item">-</div>
-          <div class="item" >-</div>
-          <div class="item">-</div>
-          <div class="item" >-</div>
-          <div class="item">
-              <form method="POST">
-                <input type="submit" value="X">
-              </form>
-          </div>
-      </div>
-  </div>
-</div>
+<mat-card>
+  
+  <mat-toolbar color="primary">Tabela de Clientes</mat-toolbar>
+  
+<table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let users"> {{ users.name }} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let users"> {{ users.email }} </td>
+  </ng-container>
+
+   <!-- Cel Column -->
+   <ng-container matColumnDef="cel">
+    <th mat-header-cell *matHeaderCellDef> Cel </th>
+    <td mat-cell *matCellDef="let users"> {{ users.cel }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+</mat-card>
+

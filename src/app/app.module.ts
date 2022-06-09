@@ -21,8 +21,7 @@ import { HomeModule } from './home/home.module';
     LoginModule,
     MensagemModule,
     HomeModule,
-    BrowserAnimationsModule,
-    
+    BrowserAnimationsModule
   ],
   providers: [StorageService],
   bootstrap: [AppComponent]

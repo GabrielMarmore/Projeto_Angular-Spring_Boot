@@ -8,7 +8,7 @@ import { StorageService } from './services/storage.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Mlw Store';
+  title = 'MLW Store';
 
   constructor(private storage: StorageService, private router: Router) {}
   auth = this.storage.getData('auth');

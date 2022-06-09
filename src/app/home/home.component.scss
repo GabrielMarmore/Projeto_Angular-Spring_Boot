@@ -58,6 +58,7 @@ mat-sidenav-container {
     height: calc(38vh - 98px);
     margin: 16px;
     margin-left: 32px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,14 +74,15 @@ mat-sidenav-container {
     height: calc(100vh - 98px);
     margin: 16px;
     margin-left: 32px;
+    
     display: flex;
     justify-content: center;
-    align-items: center;
 
     font-size: 2rem;
     color: lightgray;
 
     border-radius: 10px;
+
 }
 
 .menu-button{
@@ -97,9 +99,10 @@ mat-sidenav-container {
 }
 
 .menuside:hover{
-    background-color: #2D2D2D;
+    background-color: #FF5101;
 }
 
 .menu-button:hover {
     background-color: #FF5101;
 }
+
