@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BudgetComponent } from './home/budget/budget.component';
+import { UserComponent } from './home/user/user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: 'home',
-    component: BudgetComponent
+    component: UserComponent
   },
 ];
 

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   ) {}
   site = 'https://protected-fortress-44116.herokuapp.com';
 
-  username = 'admin';
+  username = '';
   password = '';
   c_username = '';
   c_password = '';
@@ -63,8 +63,6 @@ export class LoginComponent implements OnInit {
     this.postLogin(this.username, this.password).subscribe(
       (data) => {
         this.storage.setData('auth', data);
-        console.log(this.storage.getData('auth'));
-        this.router.navigate(['home']);
       },
       (error) => {
         alert('Usuário ou senha inválidos');

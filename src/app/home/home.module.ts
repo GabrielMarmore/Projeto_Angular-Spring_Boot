@@ -13,6 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { UdpateComponent } from './udpate/udpate.component';
+import { FormsModule } from '@angular/forms';
+import { MensagemComponent } from '../mensagem/mensagem.component';
+import { MensagemModule } from '../mensagem/mensagem.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,8 @@ import { MatCardModule } from '@angular/material/card';
     UserComponent,
     PartComponent,
     BrandComponent,
-    BudgetComponent
+    BudgetComponent,
+    UdpateComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +37,9 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatDividerModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    MensagemModule
   ],
   exports:[
     HomeComponent

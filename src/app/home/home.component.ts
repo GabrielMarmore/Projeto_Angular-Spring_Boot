@@ -14,10 +14,15 @@ export class HomeComponent implements OnInit {
   sidenav!: MatSidenav;
 
   constructor(private storage: StorageService, private router: Router) { }
+  username = this.storage.getData('auth').username;
+  userType = this.storage.getData('auth').profile[0];
 
   postLogout() {
     this.storage.clear();
-    console.log(this.storage.getData('auth'));
+  }
+
+  getUserType(){
+    return (this.userType == 'ADMIN')? "Administrador": "Cliente";
   }
 
   ngOnInit(): void {

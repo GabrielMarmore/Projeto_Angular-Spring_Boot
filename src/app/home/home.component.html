@@ -1,65 +1,90 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button
-    mat-icon-button class="menuside"
+  <button
+    mat-icon-button
+    class="menuside"
     *ngIf="sidenav.mode === 'over'"
     (click)="sidenav.toggle()"
-    >
+  >
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-    </button>
-    <img height="75" src="../../assets/images/MLW_Store_sm.png" alt="Foto do logo da loja."/>
+  </button>
+  <img
+  [routerLink]="['']"
+    height="75"
+    src="../../assets/images/MLW_Store_sm.png"
+    alt="Foto do logo da loja."
+    style="cursor: pointer;"
+  />
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">       
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="../../assets/images/perfil.jpg"
+      alt="Foto de perfil."
+    />
 
-        <img class="avatar mat-elevation-z8" src="../../assets/images/perfil.jpg" alt="Foto de perfil."/>
+    <h4 class="nome">Olá, {{ username }}</h4>
+    <p class="cargo">{{ getUserType() }}</p>
 
-        <h4 class="nome">Olá, Admin.</h4>
-        <p class="cargo">Administrador</p>
+    <mat-divider></mat-divider>
+    <div *ngIf="userType == 'ADMIN'">
+      <button mat-button class="menu-button" [routerLink]="['']">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-button class="menu-button" [routerLink]="['users']">
+        <mat-icon>person</mat-icon>
+        <span>Clientes</span>
+      </button>
+      <button mat-button class="menu-button" [routerLink]="['parts']">
+        <mat-icon>settings_input_hdmi</mat-icon>
+        <span>Peças</span>
+      </button>
+      <button mat-button class="menu-button" [routerLink]="['brands']">
+        <mat-icon>store</mat-icon>
+        <span>Marcas</span>
+      </button>
+      <button mat-button class="menu-button" [routerLink]="['budgets']">
+        <mat-icon>attach_money</mat-icon>
+        <span>Orçamento</span>
+      </button>
+    </div>
+    <div *ngIf="userType != 'ADMIN'">
+      <button mat-button class="menu-button" [routerLink]="['']">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-button class="menu-button" [routerLink]="['parts']">
+        <mat-icon>settings_input_hdmi</mat-icon>
+        <span>Peças</span>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
 
-        <mat-divider></mat-divider>
+    <button
+      mat-button
+      class="menu-button"
+      [routerLink]="['login']"
+      (click)="postLogout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-sidenav>
 
-        <button mat-button class="menu-button" [routerLink]="['']">
-            <mat-icon>home</mat-icon>
-            <span>Home</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['users']">
-            <mat-icon>person</mat-icon>
-            <span>Clientes</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['parts']">
-            <mat-icon>settings_input_hdmi</mat-icon>
-            <span>Peças</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['brands']">
-            <mat-icon>store</mat-icon>
-            <span>Marcas</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['budgets']">
-            <mat-icon>attach_money</mat-icon>
-            <span>Orçamento</span>
-        </button>
+  <mat-sidenav-content>
+    <div class="content1 mat-elevation-z8">
+      <img
+        class="banner mat-elevation-z8"
+        src="../../assets/images/banner.jpg"
+        alt="Foto do logo da loja."
+      />
+    </div>
 
-        <mat-divider></mat-divider>
-
-        <button mat-button class="menu-button" [routerLink]="['login']" (click)="postLogout()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span>Sair</span>
-        </button>
-
-    </mat-sidenav>    
-
-    <mat-sidenav-content>
-        <div class="content1 mat-elevation-z8">  
-            <img class="banner mat-elevation-z8" src="../../assets/images/banner.jpg" alt="Foto do logo da loja."/>         
-            
-        </div>
-
-        <div class="content2 mat-elevation-z8">            
-            <router-outlet></router-outlet>
-        </div>
-
-    </mat-sidenav-content>
-    
+    <div class="content2 mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

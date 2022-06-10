@@ -1,0 +1,91 @@
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao atualizar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary">Informações usuário</mat-toolbar>
+
+  <table border="1">
+    <tr>
+      <td>Nome de usuário</td>
+      <td>Nome</td>
+      <td>E-mail</td>
+      <td>Telefone</td>
+    </tr>
+
+    <tr>
+      <td>{{ user.login }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <form class="form mt-4" (ngSubmit)="updateUser()" #createUserForm="ngForm">
+      <div class="form-group">
+        <label for="username">Nome de usuário</label>
+        <input
+          required
+          id="username"
+          name="username"
+          class="form-control"
+          placeholder="Digite seu nome de usuário"
+          type="text"
+          [(ngModel)]="user.login"
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">Nome completo</label>
+        <input
+          required
+          id="name"
+          name="name"
+          class="form-control"
+          placeholder="Digite seu nome completo"
+          type="text"
+          [(ngModel)]="user.name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          required
+          id="email"
+          name="email"
+          class="form-control"
+          placeholder="Digite seu e-mail"
+          type="email"
+          [(ngModel)]="user.email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tell">Celular</label>
+        <input
+          required
+          id="telefone"
+          name="telefone"
+          class="form-control"
+          placeholder="(XX) XXXXX-XXXX"
+          type="tel"
+          [(ngModel)]="user.phone"
+        />
+      </div>
+      <button
+        style="background-color: var(--tertiary)"
+        type="submit"
+        class="btn btn-primary col-12 mt-4"
+        [disabled]="createUserForm.invalid"
+      >
+        <i class="fa-solid fa-check"></i> Atualizar
+      </button>
+      <a href="javascript:void(0)" [routerLink]="['/']">
+        Voltar para tabela de usuários
+      </a>
+    </form>
+  </div>
+</mat-card>

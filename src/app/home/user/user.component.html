@@ -1,30 +1,136 @@
 <mat-card>
-  
-  <mat-toolbar color="primary">Tabela de Clientes</mat-toolbar>
-  
-<table mat-table [dataSource]="users" class="mat-elevation-z8">
+  <p *ngIf="error.message != ''">
+  <app-mensagem
+      mensagem="Erro ao deletar. {{error.message}}"
+    ></app-mensagem>
+  </p>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let users"> {{ users.name }} </td>
-  </ng-container>
+  <mat-toolbar color="primary"
+    ><div class="conteiner">
+      Tabela de Clientes
+      <button class="btn btn-success" (click)="changeDiv()">
+        <i class="fa-solid fa-user-plus"></i>
+      </button></div
+  ></mat-toolbar>
 
-  <!-- Email Column -->
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let users"> {{ users.email }} </td>
-  </ng-container>
+  <div id="divUsersForms">
+    <div>
+      <table border="1">
+        <tr>
+          <td>Nome de usuário</td>
+          <td>Nome</td>
+          <td>E-mail</td>
+          <td>Telefone</td>
+          <td>Editar</td>
+          <td>Ação</td>
+        </tr>
 
-   <!-- Cel Column -->
-   <ng-container matColumnDef="cel">
-    <th mat-header-cell *matHeaderCellDef> Cel </th>
-    <td mat-cell *matCellDef="let users"> {{ users.cel }} </td>
-  </ng-container>
+        <tr *ngFor="let user of users; index as i">
+          <td>{{ user.login }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>
+            <button
+              class="btn"
+              [routerLink]="['update', i]"
+              style="background-color: var(--tertiary); color: #fff"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteUser(user.id)">
+              X
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="display: none">
+      <form class="form mt-4" (ngSubmit)="createUser()" #userForm="ngForm">
+        <div class="form-group">
+          <label for="username">Nome de usuário</label>
+          <input
+            required
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="Digite seu nome de usuário"
+            type="text"
+            [(ngModel)]="c_username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Nome completo</label>
+          <input
+            required
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Digite seu nome completo"
+            type="text"
+            [(ngModel)]="c_name"
+          />
+        </div>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            required
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Digite seu e-mail"
+            type="email"
+            [(ngModel)]="c_email"
+          />
+        </div>
 
+        <div class="form-group">
+          <label for="tell">Celular</label>
+          <input
+            required
+            id="telefone"
+            name="telefone"
+            class="form-control"
+            placeholder="(XX) XXXXX-XXXX"
+            type="tel"
+            [(ngModel)]="c_telefone"
+          />
+        </div>
+
+        <div class="form-group">
+          <select [(ngModel)]="c_userType" name="user_type" id="user_type">
+            <option value="1">Administrador</option>
+            <option value="2">Cliente</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input
+            required
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Digite sua senha"
+            type="password"
+            [(ngModel)]="c_password"
+          />
+          <a href="javascript:void(0)" (click)="changeDiv()"
+            >Voltar para tabela de usuários</a
+          >
+        </div>
+        <button
+          style="background-color: var(--tertiary)"
+          type="submit"
+          class="btn btn-primary col-12 mt-4"
+          [disabled]="userForm.invalid"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i> Criar usuário
+        </button>
+      </form>
+    </div>
+  </div>
 </mat-card>
-
