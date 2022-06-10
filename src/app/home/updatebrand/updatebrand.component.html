@@ -1,0 +1,49 @@
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao atualizar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary">Informações Marca</mat-toolbar>
+
+  <table border="1">
+    <tr>
+      <td>Código da marca</td>
+      <td>Nome da marca</td>
+    </tr>
+
+    <tr>
+      <td>{{ brand.id }}</td>
+      <td>{{ brand.name }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <form class="form mt-4" (ngSubmit)="updateBrand()" #createBrandForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nome da marca</label>
+        <input
+          required
+          id="name"
+          name="name"
+          class="form-control"
+          placeholder="Digite o nome da marca"
+          type="text"
+          [(ngModel)]="brand.name"
+        />
+      </div>
+      <button
+        style="background-color: var(--tertiary)"
+        type="submit"
+        class="btn btn-primary col-12 mt-4"
+        [disabled]="createBrandForm.invalid"
+      >
+        <i class="fa-solid fa-check"></i> Atualizar
+      </button>
+      <a href="javascript:void(0)" [routerLink]="['/']">
+        Voltar para tabela de usuários
+      </a>
+    </form>
+  </div>
+</mat-card>

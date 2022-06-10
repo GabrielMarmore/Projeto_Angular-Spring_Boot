@@ -1,0 +1,25 @@
+th{
+  font-size: 25px;
+}
+
+td, p{
+  font-size: 18px;
+  padding: 5px 10px;
+}
+
+.conteiner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+table{
+  font-size: 18px;
+  width: 900px;
+}
+
+form{
+  font-size: 18px;
+  width: 900px;
+}

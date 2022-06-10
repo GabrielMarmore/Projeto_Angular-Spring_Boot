@@ -1,0 +1,64 @@
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao atualizar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary">Informações Marca</mat-toolbar>
+
+  <table border="1">
+    <tr>
+      <td>Código do orçamento</td>
+      <td>Nome do usuário</td>
+      <td>Nome da peça</td>
+    </tr>
+
+    <tr>
+      <td>{{ budget.id }}</td>
+      <td>{{ budget.user }}</td>
+      <td>{{ budget.part }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <form class="form mt-4" (ngSubmit)="updateBudget()" #createBudgetForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nome do usuário</label>
+        <input
+          required
+          id="name"
+          name="name"
+          class="form-control"
+          placeholder="Digite o nome do usuário"
+          type="text"
+          [(ngModel)]="budget.user"
+        />
+       </div>
+        <div class="form-group">
+          <label for="name">Nome da peça</label>
+          <input
+            required
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Digite o nome da peça"
+            type="text"
+            [(ngModel)]="budget.part"
+          />
+      </div>
+      <button
+        style="background-color: var(--tertiary)"
+        type="submit"
+        class="btn btn-primary col-12 mt-4"
+        [disabled]="createBudgetForm.invalid"
+      >
+        <i class="fa-solid fa-check"></i> Atualizar
+      </button>
+      <a href="javascript:void(0)" [routerLink]="['/']">
+        Voltar para tabela de usuários
+      </a>
+      </form>
+  </div>
+</mat-card>
+

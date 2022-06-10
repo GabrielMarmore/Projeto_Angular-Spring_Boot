@@ -1,3 +1,49 @@
-<div>
-    <h2>Orçamentos dos clientes</h2>
-</div>
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao deletar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary"
+    ><div class="conteiner">
+      Tabela de Orçamentos
+      <button class="btn btn-success">
+        <i class="fa-solid fa-user-plus"></i>
+      </button></div
+  ></mat-toolbar>
+
+  <div id="divUsersForms">
+    <div>
+      <table border="1">
+        <tr>
+          <td>Código do orçamento</td>
+          <td>Nome do usuário</td>
+          <td>Nome da peça</td>
+          <td>Editar</td>
+          <td>Ação</td>
+        </tr>
+
+        <tr *ngFor="let budget of budgets; index as i">
+          <td>{{ budget.id }}</td>
+          <td>{{ budget.user }}</td>
+          <td>{{ budget.part }}</td>
+          <td>
+            <button
+              class="btn"
+              [routerLink]="['update', i]"
+              style="background-color: var(--tertiary); color: #fff"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteBudget(budget.id)">
+              X
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</mat-card>

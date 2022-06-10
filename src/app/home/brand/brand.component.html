@@ -1,1 +1,75 @@
-<p>brand works!</p>
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao deletar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary"
+    ><div class="conteiner">
+      Tabela de Marcas
+      <button class="btn btn-success" (click)="changeBrandDiv()">
+        <i class="fa-solid fa-user-plus"></i>
+      </button></div
+  ></mat-toolbar>
+
+  <div id="divBrandsForms">
+    <div>
+      <table border="1">
+        <tr>
+          <td>Código da marca</td>
+          <td>Nome da marca</td>
+          <td>Editar</td>
+          <td>Ação</td>
+        </tr>
+
+        <tr *ngFor="let brand of brands; index as i">
+          <td>{{ brand.id }}</td>
+          <td>{{ brand.name }}</td>
+          <td>
+            <button
+              class="btn"
+              [routerLink]="['update', i]"
+              style="background-color: var(--tertiary); color: #fff"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteBrand(brand.id)">
+              X
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="display: none">
+      <form class="form mt-4" (ngSubmit)="createBrand()" #brandForm="ngForm">
+        <div class="form-group">
+          <label for="name">Nome da marca</label>
+          <input
+            required
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Digite o nome da marca"
+            type="text"
+            [(ngModel)]="c_name"
+          />
+          <br>
+          <a href="javascript:void(0)" (click)="changeBrandDiv()"
+            >Voltar para tabela de usuários</a
+          >
+        </div>
+        <button
+          style="background-color: var(--tertiary)"
+          type="submit"
+          class="btn btn-primary col-12 mt-4"
+          [disabled]="brandForm.invalid"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i> Criar Marca
+        </button>
+      </form>
+    </div>
+  </div>
+</mat-card>

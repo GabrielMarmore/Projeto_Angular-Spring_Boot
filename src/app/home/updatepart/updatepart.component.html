@@ -1,0 +1,80 @@
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao atualizar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary">Informações usuário</mat-toolbar>
+
+  <table border="1">
+    <tr>
+      <td>Código da peça</td>
+      <td>Nome da Peça</td>
+      <td>Preço da peça</td>
+      <td>Marca da peça</td>
+    </tr>
+
+    <tr>
+      <td>{{ part.id }}</td>
+      <td>{{ part.name }}</td>
+      <td>{{ part.preco }}</td>
+      <td>{{ part.marca }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <form class="form mt-4" (ngSubmit)="updatePart()" #createPartForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nome da peça</label>
+        <input
+          required
+          id="name"
+          name="name"
+          class="form-control"
+          placeholder="Digite o nome da peça"
+          type="text"
+          [(ngModel)]="part.name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="preco">Preço da peça</label>
+        <input
+          required
+          id="preco"
+          name="preco"
+          class="form-control"
+          placeholder="Digite o preço da peça"
+          type="number"
+          [(ngModel)]="part.preco"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="marca">Marca da peça</label>
+        <input
+          required
+          id="marca"
+          name="marca"
+          class="form-control"
+          placeholder="Digite a marca da peça"
+          type="text"
+          [(ngModel)]="part.marca"
+        />
+      </div>
+      <button
+        style="background-color: var(--tertiary)"
+        type="submit"
+        class="btn btn-primary col-12 mt-4"
+        [disabled]="createPartForm.invalid"
+      >
+        <i class="fa-solid fa-check"></i> Atualizar
+      </button>
+      <a href="javascript:void(0)" [routerLink]="['/']">
+        Voltar para tabela de usuários
+      </a>
+    </form>
+  </div>
+</mat-card>
+

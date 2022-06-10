@@ -17,6 +17,9 @@ import { UdpateComponent } from './udpate/udpate.component';
 import { FormsModule } from '@angular/forms';
 import { MensagemComponent } from '../mensagem/mensagem.component';
 import { MensagemModule } from '../mensagem/mensagem.module';
+import { UpdatebrandComponent } from './updatebrand/updatebrand.component';
+import { UpdatepartComponent } from './updatepart/updatepart.component';
+import { UpdatebudgetComponent } from './updatebudget/updatebudget.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { MensagemModule } from '../mensagem/mensagem.module';
     PartComponent,
     BrandComponent,
     BudgetComponent,
-    UdpateComponent
+    UdpateComponent,
+    UpdatebrandComponent,
+    UpdatepartComponent,
+    UpdatebudgetComponent
   ],
   imports: [
     CommonModule,

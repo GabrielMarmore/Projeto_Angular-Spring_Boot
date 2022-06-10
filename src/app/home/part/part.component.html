@@ -1,1 +1,104 @@
-<p>part works!</p>
+<mat-card>
+  <p *ngIf="error.message != ''">
+    <app-mensagem
+      mensagem="Erro ao deletar. {{ error.message }}"
+    ></app-mensagem>
+  </p>
+
+  <mat-toolbar color="primary"
+    ><div class="conteiner">
+      Tabela de Peças
+      <button class="btn btn-success" (click)="changePartDiv()">
+        <i class="fa-solid fa-user-plus"></i>
+      </button></div
+  ></mat-toolbar>
+
+  <div id="divPartsForms">
+    <div>
+      <table border="1">
+        <tr>
+          <td>Peça</td>
+          <td>Preço</td>
+          <td>Marca</td>
+          <td>Editar</td>
+          <td>Ação</td>
+        </tr>
+
+        <tr *ngFor="let part of parts; index as i">
+          <td>{{ part.id }}</td>
+          <td>{{ part.name }}</td>
+          <td>{{ part.preco }}</td>
+          <td>{{ part.marca }}</td>
+          <td>
+          <td>
+            <button
+              class="btn"
+              [routerLink]="['update', i]"
+              style="background-color: var(--tertiary); color: #fff"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deletePart(part.id)">
+              X
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="display: none">
+      <form class="form mt-4" (ngSubmit)="createPart()" #partForm="ngForm">
+        <div class="form-group">
+          <label for="name">Nome da peça</label>
+          <input
+            required
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Digite o nome da peça"
+            type="text"
+            [(ngModel)]="c_name"
+          />
+          </div>
+          <div class="form-group">
+            <label for="name">Nome da marca</label>
+            <input
+              required
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Digite o nome da marca"
+              type="text"
+              [(ngModel)]="c_marca"
+            />
+            </div>
+            <div class="form-group">
+              <label for="name">Preço da peça</label>
+              <input
+                required
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Digite o preço da peça"
+                type="number"
+                [(ngModel)]="c_preco"
+              />
+          <br>
+          <a href="javascript:void(0)" (click)="changePartDiv()"
+            >Voltar para tabela de usuários</a
+          >
+        </div>
+        <button
+          style="background-color: var(--tertiary)"
+          type="submit"
+          class="btn btn-primary col-12 mt-4"
+          [disabled]="partForm.invalid"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i> Criar Peça
+        </button>
+      </form>
+    </div>
+  </div>
+</mat-card>
+

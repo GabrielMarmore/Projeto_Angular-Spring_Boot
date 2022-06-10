@@ -16,6 +16,7 @@ export class BudgetComponent implements OnInit {
 
   site = 'https://protected-fortress-44116.herokuapp.com';
   budgets = null;
+  error = {message: ''};
 
   getList() {
     this.http.get<any>(this.site + '/api/v1/budgets', {
@@ -23,6 +24,18 @@ export class BudgetComponent implements OnInit {
     })      .subscribe((data) => {
       this.budgets = data;
     });
+  }
+
+  deleteBudget(budgetId: number){
+    console.log(this.storage.getData('auth'));
+      this.http.delete(this.site + '/api/v1/budgets/' + budgetId, {
+        headers: { Authorization: 'Bearer ' + this.storage.getData('auth').token }
+      })
+      .subscribe(res => {
+      }, (error) => {
+        this.error = error;
+        console.log(error);
+      });
   }
 
   ngOnInit(): void {

@@ -1,3 +1,6 @@
+import { UpdatebudgetComponent } from './updatebudget/updatebudget.component';
+import { UpdatepartComponent } from './updatepart/updatepart.component';
+import { UpdatebrandComponent } from './updatebrand/updatebrand.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -15,7 +18,13 @@ const routes: Routes = [
   {path: 'brands', component: BrandComponent},
   {path: 'budgets', component: BudgetComponent},
   {path: 'users/update/:index', component: UdpateComponent},
-  {path: 'home/update/:index', component: UdpateComponent}
+  {path: 'home/update/:index', component: UdpateComponent},
+  {path: 'brands/update/:index', component: UpdatebrandComponent},
+  {path: 'home/update/:index', component: UpdatebrandComponent},
+  {path: 'parts/update/:index', component: UpdatepartComponent},
+  {path: 'home/update/:index', component: UpdatepartComponent},
+  {path: 'budgets/update/:index', component: UpdatebudgetComponent},
+  {path: 'home/update/:index', component: UpdatebudgetComponent}
 ];
 
 @NgModule({
