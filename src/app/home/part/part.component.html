@@ -8,7 +8,7 @@
   <mat-toolbar color="primary"
     ><div class="conteiner">
       Tabela de Peças
-      <button class="btn btn-success" (click)="changePartDiv()">
+      <button *ngIf="auth.profile[0] == 'ADMIN'" class="btn btn-success" (click)="changePartDiv()">
         <i class="fa-solid fa-user-plus"></i>
       </button></div
   ></mat-toolbar>
@@ -17,11 +17,11 @@
     <div>
       <table border="1">
         <tr>
-          <td>Peça</td>
+          <td>Nome peça</td>
           <td>Preço</td>
           <td>Marca</td>
-          <td>Editar</td>
-          <td>Ação</td>
+          <td *ngIf="auth.profile[0] == 'ADMIN'">Editar</td>
+          <td *ngIf="auth.profile[0] == 'ADMIN'">Ação</td>
         </tr>
 
         <tr *ngFor="let part of parts; index as i">
@@ -29,8 +29,7 @@
           <td>{{ part.name }}</td>
           <td>{{ part.preco }}</td>
           <td>{{ part.marca }}</td>
-          <td>
-          <td>
+          <td *ngIf="auth.profile[0] == 'ADMIN'">
             <button
               class="btn"
               [routerLink]="['update', i]"
@@ -39,7 +38,7 @@
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
           </td>
-          <td>
+          <td *ngIf="auth.profile[0] == 'ADMIN'">
             <button class="btn btn-danger" (click)="deletePart(part.id)">
               X
             </button>
@@ -86,7 +85,7 @@
               />
           <br>
           <a href="javascript:void(0)" (click)="changePartDiv()"
-            >Voltar para tabela de usuários</a
+            >Voltar para tabela</a
           >
         </div>
         <button

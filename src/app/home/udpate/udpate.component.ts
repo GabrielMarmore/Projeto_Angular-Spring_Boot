@@ -15,7 +15,8 @@ export class UdpateComponent implements OnInit {
     private storage: StorageService
   ) {}
   error = {message: ''};
-  site = 'https://protected-fortress-44116.herokuapp.com';
+    
+  site =  'https://secret-harbor-56343.herokuapp.com';;
 
   user = {id: '', name: '', email: '', phone: '', login: ''};
 

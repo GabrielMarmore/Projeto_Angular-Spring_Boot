@@ -23,7 +23,8 @@ export class BrandComponent implements OnInit {
     private storage: StorageService
   ) {}
 
-  site = 'https://protected-fortress-44116.herokuapp.com';
+    
+  site =  'https://secret-harbor-56343.herokuapp.com';;
 
   getList() {
     this.http.get<any>(this.site + '/api/v1/brands', {

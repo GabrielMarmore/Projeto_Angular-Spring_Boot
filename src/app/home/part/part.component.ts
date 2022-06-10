@@ -20,8 +20,8 @@ export class PartComponent implements OnInit {
     private http: HttpClient,
     private storage: StorageService
   ) {}
-
-  site = 'https://protected-fortress-44116.herokuapp.com';
+  auth = this.storage.getData('auth');
+  site = 'https://secret-harbor-56343.herokuapp.com';;
 
   getList() {
     this.http.get<any>(this.site + '/api/v1/parts', {

@@ -7,8 +7,8 @@
 
   <mat-toolbar color="primary"
     ><div class="conteiner">
-      Tabela de Clientes
-      <button class="btn btn-success" (click)="changeDiv()">
+      Tabela de usuarios
+      <button *ngIf="auth.profile[0] == 'ADMIN'" class="btn btn-success" (click)="changeDiv()">
         <i class="fa-solid fa-user-plus"></i>
       </button></div
   ></mat-toolbar>
@@ -18,6 +18,7 @@
       <table border="1">
         <tr>
           <td>Nome de usuário</td>
+          <td>Tipo de usuário</td>
           <td>Nome</td>
           <td>E-mail</td>
           <td>Telefone</td>
@@ -27,6 +28,7 @@
 
         <tr *ngFor="let user of users; index as i">
           <td>{{ user.login }}</td>
+          <td>{{ getUserType(user.profiles[0]) }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
@@ -119,7 +121,7 @@
             [(ngModel)]="c_password"
           />
           <a href="javascript:void(0)" (click)="changeDiv()"
-            >Voltar para tabela de usuários</a
+            >Voltar para tabela</a
           >
         </div>
         <button

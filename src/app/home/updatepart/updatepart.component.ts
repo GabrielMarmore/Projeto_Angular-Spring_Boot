@@ -16,7 +16,8 @@ export class UpdatepartComponent implements OnInit {
     private storage: StorageService
   ) {}
   error = {message: ''};
-  site = 'https://protected-fortress-44116.herokuapp.com';
+    
+  site =  'https://secret-harbor-56343.herokuapp.com'; 
 
   part = {id: '', name: '', preco: '', marca: ''};
 
